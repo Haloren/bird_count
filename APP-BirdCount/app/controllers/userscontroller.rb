@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
     get '/create_account' do
         if !session[:user_id]
-            erb: 'users/create_user'
+            erb :'users/create_user'
         else 
             redirect to ('/guides')
         end
@@ -33,7 +33,7 @@ class UsersController < ApplicationController
             redirect to('/guides')
         else
             @errors = "Name and/or Password is Incorrect"
-            erb: 'users/login'
+            erb :'users/login'
         end
     end
 

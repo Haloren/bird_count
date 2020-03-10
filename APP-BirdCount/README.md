@@ -2,7 +2,7 @@ Description:
 North American Bird Counter
 
 Instructions:
--cd BIRD_COUNT
+-cd app-birdcount
 -run "bundle" in the terminal
 -run "rackup"
 -Sign up or Sign in and mark which birds you have spotted, where, and on what date

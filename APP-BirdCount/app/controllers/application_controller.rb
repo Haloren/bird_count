@@ -8,7 +8,23 @@ class ApplicationController < Sinatra::Base
   end
 
   get "/" do
-    erb :welcome
+    if logged_in?
+      redirect to ('/guides')
+    else 
+      erb :welcome
+    end 
+  end
+
+  helpers do
+    
+    def logged_in?
+      !!session[:user_id]
+    end
+
+    def current_user
+      @current_user ||= User.find(session[:user_id])
+    end
+  
   end
 
 end

@@ -1,7 +1,7 @@
 # Specifications for the Sinatra Assessment
 
 Specs:
-- [ ] Use Sinatra to build the app
+- [x] Use Sinatra to build the app
 - [ ] Use ActiveRecord for storing information in a database
 - [ ] Include more than one model class (e.g. User, Post, Category)
 - [ ] Include at least one has_many relationship on your User model (e.g. User has_many Posts)

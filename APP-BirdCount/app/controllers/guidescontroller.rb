@@ -3,7 +3,7 @@ class GuidesController < ApplicationController
     get '/guide' do
         if logged_in?
             @guides = current_user.guides
-            erb: 'guides/index'
+            erb :'guides/index'
         else 
             redirect to ('/login')
         end
@@ -12,7 +12,7 @@ class GuidesController < ApplicationController
     get '/guides/new' do
         if loggin_in?
             @current_user
-            erb: 'guides/create_guide'
+            erb :'guides/create_guide'
         else 
             redirect to('/login')
         end
@@ -23,7 +23,7 @@ class GuidesController < ApplicationController
             @guide = current_user.guides.build(params)
             if !@guide.save
                 @errors = @guide.errors.full_messages
-                erb: '/guides/create_guide'
+                erb :'/guides/create_guide'
             else
                 redirect to('/guides')
             end
@@ -35,7 +35,7 @@ class GuidesController < ApplicationController
     get '/guides/:id' do
         @guide = Guide.find(params[:id])
         if logged_in? && @guide.user == current_user
-            erb : 'guides/show_guide'
+            erb :'guides/show_guide'
         else
             redirect to ('/login')
         end
@@ -46,7 +46,7 @@ class GuidesController < ApplicationController
         if logged_in? && @guide.user == current_user
             @guide = Guide.find(params[:id])
             @user = User.find(session[:user_id])
-            erb: 'guides/update_guide'
+            erb :'guides/update_guide'
         else
             redirect to ('/login')
         end
@@ -59,7 +59,7 @@ class GuidesController < ApplicationController
         @guide.date = params[:date]
         if !@guide.save
             @errors = @guide.errors.full_messages
-            erb: '/guides/update_guide'
+            erb :'/guides/update_guide'
         else 
             redirect to ("/guides/#{@guide.id}")
         end

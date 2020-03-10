@@ -11,5 +11,17 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema.define(version: 0) do
+    create_table "guides", force: :cascade do |g|
+        g.string "bird"
+        g.string "description"
+        g.date "date"
+        g.integer "user_id"
+    end
+
+    create_table "users", force: :cascade do |u|
+        u.string "username"
+        u.string "email"
+        u.string "password_digest"
+    end
 
 end
