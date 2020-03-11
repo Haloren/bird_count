@@ -55,7 +55,7 @@ class GuidesController < ApplicationController
     patch '/guides/:id' do
         @guide = Guide.find(params[:id])
         @guide.bird = params[:bird]
-        @guide.description = params[:description]
+        @guide.notes = params[:notes]
         @guide.date = params[:date]
         if !@guide.save
             @errors = @guide.errors.full_messages
