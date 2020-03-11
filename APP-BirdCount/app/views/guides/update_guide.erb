@@ -1,1 +1,19 @@
-<h1 style="color: #3CA4F4; font-size:28px">Create your Account</h1>
+<h1 style="color: #3CA4F4; font-size:28px">Update Guide Entry</h1>
+
+<form action="/guides/<%= @guide.id %>" method="POST">
+    <input type="hidden" id="hidden" name="_method" value="patch" />
+
+    <label for="bird"> Bird Name: </label>
+    <input type="text" name="bird" id="bird" value="<%= @guide.bird %>" />
+    </br>
+
+    <label for="date"> Date: </label>
+    <input type="date" name="date" id="date" min="1900-01-01" value="<%= @guide.date %>" />
+    </br>
+
+    <label for="notes"> Notes: </label>
+    <input type="text" name="notes" id="notes" value="<%= @guide.note %>" />
+    </br>
+
+    <input type="submit" id="Update Entry" />
+</form>

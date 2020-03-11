@@ -1,1 +1,21 @@
-<h1 style="color: #3CA4F4; font-size:28px">Create your Account</h1>
+<h1 style="color: #3CA4F4; font-size:28px">About a Bird</h1>
+
+<h2> <%= @guide.bird %> </h2>
+</br>
+
+<h3> Your saw <%= @guide.bird %> on <%= @guide.date %>. </h3> 
+</br>
+
+<p> Notes: <%= @guide.note %> </p> 
+</br>
+
+<a href="guides/<%= @guide.id %>/edit">Update Bird Entry</a>
+</br>
+
+<form action="/guides/<%= @guide.id %>/delete" method="POST">
+    <input type="hidden" id="hidden" name="_method" value="DELETE" />
+    <input type="submit" value="DELETE ENTRY">
+</form>
+</br>
+
+<a href="/guides">See all recorded Birds</a>
