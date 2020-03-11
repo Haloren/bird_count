@@ -45,7 +45,7 @@ class GuidesController < ApplicationController
         @guide = Guide.find(params[:id])
         if logged_in? && @guide.user == current_account
             @guide = Guide.find(params[:id])
-            @user = User.find(session[:user_id])
+            @user = User.find(session[:id])
             erb :'guides/update_guide'
         else
             redirect to ('/login')
