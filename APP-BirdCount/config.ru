@@ -8,6 +8,6 @@ require './config/environment'
 
 ActiveRecord::Base.establish_connection(ENV['DATABASE_URL']) if ENV['DATABASE_URL']
 use Rack::MethodOverride
-use GuidesController
 use UsersController 
+use GuidesController
 run ApplicationController

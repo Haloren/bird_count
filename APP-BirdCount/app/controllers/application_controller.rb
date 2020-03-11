@@ -6,10 +6,11 @@ class ApplicationController < Sinatra::Base
     set :public_folder, 'public'
     set :views, 'app/views'
     enable :sessions
+    set :session_secret, "findmybird"
   end
 
   get "/" do
-    if logged_in?
+    if @current_account
       redirect to ('/guides')
     else 
       erb :welcome
@@ -17,15 +18,15 @@ class ApplicationController < Sinatra::Base
   end
 
   helpers do
-    
-    def logged_in?
-      !!session[:user_id]
-    end
 
-    def current_user
-      @current_user ||= User.find(session[:user_id])
+    def current_account
+      @current_account ||= User.find(session[:id])
     end
   
+    def logged_in?
+      !!current_account
+    end
+
   end
 
 end

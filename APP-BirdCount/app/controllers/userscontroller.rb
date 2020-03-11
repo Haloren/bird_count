@@ -27,10 +27,11 @@ class UsersController < ApplicationController
     end
 
     post '/login' do
-        @user = User.find_by(username: params[:username]) #use email instead?
-        if @user && @user.authenticate(params[:password])
-            session[:user_id] = @user.id
-            redirect to('/guides')
+        user = User.find_by(username: params[:username]) 
+        if user && user.authenticate(params[:password])
+            session[:id] = user.id
+            @current_user = User.find_by(id: session[:id])
+            redirect '/guides'
         else
             @errors = "Name and/or Password is Incorrect"
             erb :'users/login'
@@ -39,8 +40,6 @@ class UsersController < ApplicationController
 
     get '/logout' do
         if logged_in?
-            @user = current_user
-            @user = nil
             session.destroy
             redirect to ('/')
         else

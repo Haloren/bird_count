@@ -1,8 +1,8 @@
 class GuidesController < ApplicationController
 
-    get '/guide' do
+    get '/guides' do
         if logged_in?
-            @guides = current_user.guides
+            @guides = current_account.guides
             erb :'guides/index'
         else 
             redirect to ('/login')
@@ -10,8 +10,8 @@ class GuidesController < ApplicationController
     end
 
     get '/guides/new' do
-        if loggin_in?
-            @current_user
+        if logged_in?
+            @current_account
             erb :'guides/create_guide'
         else 
             redirect to('/login')
@@ -19,8 +19,8 @@ class GuidesController < ApplicationController
     end
 
     post '/guides' do
-        if loggin_in?
-            @guide = current_user.guides.build(params)
+        if logged_in?
+            @guide = current_account.guides.build(params)
             if !@guide.save
                 @errors = @guide.errors.full_messages
                 erb :'/guides/create_guide'
@@ -34,7 +34,7 @@ class GuidesController < ApplicationController
 
     get '/guides/:id' do
         @guide = Guide.find(params[:id])
-        if logged_in? && @guide.user == current_user
+        if logged_in? && @guide.user == current_account
             erb :'guides/show_guide'
         else
             redirect to ('/login')
@@ -43,7 +43,7 @@ class GuidesController < ApplicationController
 
     get '/guides/:id/edit' do
         @guide = Guide.find(params[:id])
-        if logged_in? && @guide.user == current_user
+        if logged_in? && @guide.user == current_account
             @guide = Guide.find(params[:id])
             @user = User.find(session[:user_id])
             erb :'guides/update_guide'
@@ -67,7 +67,7 @@ class GuidesController < ApplicationController
 
     delete '/guides/:id/delete' do
         @guide = Guide.find(params[:id])
-        if logged_in? && @guide.user == current_user
+        if logged_in? && @guide.user == current_account
             @guide.destroy
             redirect to ('/guides')
         else 
