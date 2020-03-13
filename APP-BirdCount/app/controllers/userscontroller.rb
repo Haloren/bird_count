@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
     get '/create_account' do
-        if !session[:user_id]
+        if !logged_in?
             erb :'users/create_user'
         else 
             redirect to ('/guides')
@@ -19,7 +19,7 @@ class UsersController < ApplicationController
     end
 
     get '/login' do
-        if !session[:user_id]
+        if !logged_in?
             erb :'users/login'
         else
             redirect to ('/guides')
@@ -30,7 +30,6 @@ class UsersController < ApplicationController
         user = User.find_by(username: params[:username]) 
         if user && user.authenticate(params[:password])
             session[:id] = user.id
-            @current_user = User.find_by(id: session[:id])
             redirect '/guides'
         else
             @errors = "Name and/or Password is Incorrect"
@@ -39,12 +38,8 @@ class UsersController < ApplicationController
     end
 
     get '/logout' do
-        if logged_in?
-            session.destroy
-            redirect to ('/')
-        else
-            redirect to ('/')
-        end
+        session.destroy
+        redirect to ('/')
     end
 
 end

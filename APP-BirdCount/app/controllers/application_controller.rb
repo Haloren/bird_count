@@ -10,7 +10,7 @@ class ApplicationController < Sinatra::Base
   end
 
   get "/" do
-    if @current_account
+    if logged_in? 
       redirect to ('/guides')
     else 
       erb :welcome
@@ -20,7 +20,7 @@ class ApplicationController < Sinatra::Base
   helpers do
 
     def current_account
-      @current_account ||= User.find(session[:id])
+      @current_account ||= User.find_by(id: session[:id])
     end
   
     def logged_in?
