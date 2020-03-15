@@ -3,13 +3,14 @@
 <h2> <%= @guide.bird %> </h2>
 </br>
 
-<h3> Your saw <%= @guide.bird %> on <%= @guide.date %>. </h3> 
+<h3> Your saw a <%= @guide.bird %> on <%= @guide.date %>. </h3> 
 </br>
 
 <p> Notes: <%= @guide.notes %> </p> 
 </br>
 
 <a href="/guides/<%= @guide.id %>/edit">Update Bird Entry</a>
+</br>
 </br>
 
 <form action="/guides/<%= @guide.id %>/delete" method="POST">
@@ -19,3 +20,7 @@
 </br>
 
 <a href="/guides">See all recorded Birds</a>
+</br>
+
+    <p></p>
+    <p><b><a href="/logout"> LOG OUT </a></b> </p>
