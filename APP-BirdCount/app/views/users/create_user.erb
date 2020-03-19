@@ -22,6 +22,9 @@
     </br>
 
     <p></p>
-    <p><b><a href="/logout"> LOG OUT </a></b> </p>
+    <p><b><a href="/logout"> Return to Welcome Page </a></b> </p>
 </form>    
 
+<%if @errors %>
+    <h2 style="color: #900C3F;"><%= @errors %></h2>
+<%end%>
