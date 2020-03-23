@@ -1,10 +1,10 @@
 Description:
-North American Bird Counter
+North American Bird Guide Recorder
 
 Instructions:
 -cd app-birdcount
 -run "bundle" in the terminal
--run "rackup"
+-run "shotgun"
 -Sign up or Sign in and mark which birds you have spotted, where, and on what date
 
 Contributing
