@@ -5,6 +5,7 @@ Instructions:
 -cd app-birdcount
 -run "bundle" in the terminal
 -run "shotgun"
+-open local browser http://127.0.0.1:9393/
 -Sign up or Sign in and mark which birds you have spotted, where, and on what date
 
 Contributing

@@ -1,13 +1,21 @@
 <h1 style="color: #3CA4F4; font-size:28px">Add a bird to your Guide</h1>
 <h2> Record a bird and the date it was seen below: </h2>
+
+<% if @errors %>
+  <% @errors.each do |error| %>
+    <p style="color: red;"><%= error %></p>
+  <% end %>
+<% end %>
+
+<br> 
 <form action="/guides" method="POST">
     
-    <label for="bird"> Bird: </label>
+    <label for="bird"> Bird Name: </label>
     </br>
     <input type="text" name="bird" id="bird" />
     </br>
 
-    <label for="date"> Date: </label>
+    <label for="date"> Date (YYYY-MM-DD): </label>
     </br>
     <input type="text" name="date" id="date" />
     </br>
@@ -17,6 +25,7 @@
     <input type="text" name="notes" id="notes" />
     </br>
 
+    <br>
     <input type="submit" value="Add a bird" />
     </br>
 

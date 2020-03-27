@@ -1,5 +1,12 @@
 <h1 style="color: #3CA4F4; font-size:28px">Update Guide Entry</h1>
 
+<% if @errors %>
+  <% @errors.each do |error| %>
+    <p style="color: red;"><%= error %></p>
+  <% end %>
+<% end %>
+
+<br>
 <form action="/guides/<%= @guide.id %>" method="POST">
     <input type="hidden" id="hidden" name="_method" value="patch" />
 
