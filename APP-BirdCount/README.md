@@ -7,7 +7,7 @@ Instructions:
 -run "shotgun"
 -open local browser http://127.0.0.1:9393/
 -Sign up and/or Sign in 
--Record(Create), View(Read), Change(Update), and Delete entries to make your very own bird guide.
+-Record(Create), View(Read), Change(Update), and Delete entries to make your very own bird guide of birds you have recorded and seen.
 
 Contributing
 

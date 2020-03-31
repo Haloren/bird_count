@@ -7,7 +7,8 @@
 <% end %>
 
 <br>
-<form action="/guides/<%= @guide.id %>" method="POST">
+<%# input patch to update an entry and not create a new entry %>
+<form action="/guides/<%= @guide.id %>" method="POST">  
     <input type="hidden" id="hidden" name="_method" value="patch" />
 
     <label for="bird"> Bird Name: </label>

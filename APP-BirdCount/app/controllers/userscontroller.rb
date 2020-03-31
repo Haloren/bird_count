@@ -7,10 +7,12 @@ class UsersController < ApplicationController
         end
     end
 
-    post '/create_account' do
+    post '/create_account' do #restful route should be named '/users' to align with controller name
+       #this will persist info from user into db
         @user = User.new(params)
         if !@user.save
             @errors = @user.errors.full_messages
+            # binding.pry
             erb :'users/create_user'
         else 
             session[:user_id] = @user.id
