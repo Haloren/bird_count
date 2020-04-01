@@ -59,8 +59,7 @@ class GuidesController < ApplicationController
         # @guide.notes = params[:notes]
         # @guide.date = params[:date]
         # if !@guide.save
-        if !@guide.update(bird: params[:bird], notes: params[:notes], date: params[:date])
-
+        if logged_in? && @guide.user == current_account && !@guide.update(bird: params[:bird], notes: params[:notes], date: params[:date])
             @errors = @guide.errors.full_messages
             erb :'/guides/update_guide'
         else 
