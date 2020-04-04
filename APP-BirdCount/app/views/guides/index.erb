@@ -7,7 +7,7 @@
     <%if @guides.size > 0 %>
         <% @guides.each do |guide| %>
             <% if guide.user_id == current_account.id %>
-            <li><a href="/guides/<%= guide.id %>"><%= guide.bird %> from <%= guide.date %></li>
+            <li><a href="/guides/<%= guide.id %>"><%= guide.bird %> seen <%= guide.date %></li>
             </br>
             <% end %>
         <% end %>

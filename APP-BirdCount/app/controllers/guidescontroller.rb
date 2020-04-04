@@ -20,6 +20,7 @@ class GuidesController < ApplicationController
 
     post '/guides' do #POST goes to create_guide.erb
         if logged_in?
+            binding.pry
             @guide = current_account.guides.build(params)
             if !@guide.save
                 @errors = @guide.errors.full_messages

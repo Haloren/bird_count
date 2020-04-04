@@ -3,11 +3,13 @@
 <h2> <%= @guide.bird %> </h2>
 </br>
 
-<h3> You saw a <%= @guide.bird %> on <%= @guide.date %>. </h3> 
+<h3> <%= @guide.date %>: you saw a <%= @guide.bird %> in <%= @guide.location %>. </h3> 
 </br>
 
 <p> Notes: <%= @guide.notes %> </p> 
 </br>
+
+
 
 <a href="/guides/<%= @guide.id %>/edit">Update Bird Entry</a>
 </br>
