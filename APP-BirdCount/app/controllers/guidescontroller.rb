@@ -1,6 +1,6 @@
 class GuidesController < ApplicationController
 
-    get '/guides' do #goes to index.erb
+    get '/guides' do #index.erb
         if logged_in?
             @guides = current_account.guides
             erb :'guides/index'
@@ -9,7 +9,7 @@ class GuidesController < ApplicationController
         end
     end
 
-    get '/guides/new' do #goes to create_guide.erb
+    get '/guides/new' do #create_guide.erb
         if logged_in?
             @current_account
             erb :'guides/create_guide'
@@ -18,9 +18,9 @@ class GuidesController < ApplicationController
         end
     end
 
-    post '/guides' do #POST goes to create_guide.erb
+    post '/guides' do #POST create_guide.erb
         if logged_in?
-            binding.pry
+            #binding.pry
             @guide = current_account.guides.build(params)
             if !@guide.save
                 @errors = @guide.errors.full_messages
@@ -33,7 +33,7 @@ class GuidesController < ApplicationController
         end
     end
 
-    get '/guides/:id' do #key- :id value- id number    goes to show_guide.erb
+    get '/guides/:id' do #key- :id value- id number show_guide.erb
         @guide = Guide.find(params[:id]) #used this line of code several times in this class can be refactored into a helper method (look up how to use private)
         if logged_in? && @guide.user == current_account
             erb :'guides/show_guide'
@@ -42,7 +42,7 @@ class GuidesController < ApplicationController
         end
     end
 
-    get '/guides/:id/edit' do #goes to update_guide.erb for edit form
+    get '/guides/:id/edit' do #update_guide.erb
         @guide = Guide.find(params[:id]) #used this line of code several times in this class can be refactored into a helper method (look up how to use private)
         if logged_in? && @guide.user == current_account
             @guide = Guide.find(params[:id])
@@ -54,7 +54,7 @@ class GuidesController < ApplicationController
     end
 
     patch '/guides/:id' do
-        #PATCH goes to update_guide.erb
+        #PATCH update_guide.erb
         @guide = Guide.find(params[:id]) #used this line of code several times in this class can be refactored into a helper method (look up how to use private)
         # @guide.bird = params[:bird]
         # @guide.notes = params[:notes]
@@ -68,7 +68,7 @@ class GuidesController < ApplicationController
         end
     end
 
-    delete '/guides/:id/delete' do #/delete is not needed
+    delete '/guides/:id/delete' do
         @guide = Guide.find(params[:id]) #used this line of code several times in this class can be refactored into a helper method (look up how to use private)
         if logged_in? && @guide.user == current_account
             @guide.destroy
