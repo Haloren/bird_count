@@ -4,10 +4,23 @@ class GuidesController < ApplicationController
         if logged_in?
             @guides = current_account.guides
             erb :'guides/index'
+           
         else 
             redirect to ('/login')
         end
     end
+
+
+
+    get '/guides/all_guides' do 
+        "List of all Recorded Birds (alphabetically)" #for all users
+        
+    end
+
+
+
+
+
 
     get '/guides/new' do #create_guide.erb
         if logged_in?
@@ -20,7 +33,7 @@ class GuidesController < ApplicationController
 
     post '/guides' do #POST create_guide.erb
         if logged_in?
-            #binding.pry
+            # binding.pry
             @guide = current_account.guides.build(params)
             if !@guide.save
                 @errors = @guide.errors.full_messages
@@ -34,6 +47,7 @@ class GuidesController < ApplicationController
     end
 
     get '/guides/:id' do #key- :id value- id number show_guide.erb
+        # binding.pry
         @guide = Guide.find(params[:id]) #used this line of code several times in this class can be refactored into a helper method (look up how to use private)
         if logged_in? && @guide.user == current_account
             erb :'guides/show_guide'
@@ -44,6 +58,7 @@ class GuidesController < ApplicationController
 
     get '/guides/:id/edit' do #update_guide.erb
         @guide = Guide.find(params[:id]) #used this line of code several times in this class can be refactored into a helper method (look up how to use private)
+        #binding.pry
         if logged_in? && @guide.user == current_account
             @guide = Guide.find(params[:id])
             @user = User.find(session[:id])

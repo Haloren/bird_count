@@ -7,7 +7,7 @@ class UsersController < ApplicationController
         end
     end
 
-    post '/create_account' do #restful route should be named '/users' to align with controller name
+    post '/create_account' do
        #this will persist info from user into db
         @user = User.new(params)
         if !@user.save
