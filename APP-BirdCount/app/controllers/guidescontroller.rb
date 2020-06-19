@@ -10,17 +10,20 @@ class GuidesController < ApplicationController
         end
     end
 
-
-
+    # START of Admin Functions:
     get '/guides/all_guides' do 
-        "List of all Recorded Birds (alphabetically)" #for all users
-        
+        "List of all Recorded Birds (alphabetically)"
+        # binding.pry
+        all_birds = Guide.all.collect(&:bird)
+        all_birds.sort.join(", ")
     end
-
-
-
-
-
+    get '/guides/all_users' do
+        "List all users in alphabetical order"
+        # binding.pry
+        all_users = User.all.collect(&:username)
+        all_users.sort.join(", ")
+    end
+    # END of Admin Functions
 
     get '/guides/new' do #create_guide.erb
         if logged_in?
